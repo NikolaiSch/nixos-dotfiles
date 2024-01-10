@@ -1,33 +1,43 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [ <home-manager/nixos> ];
   home-manager.users.vii = { pkgs, ... }: {
-    programs = { 
-      fzf.enable = true;    
+    programs = {
+      fzf.enable = true;
+
       zsh = {
-	enable = true;
-	enableAutosuggestions = true;
-	oh-my-zsh = {
-	  enable = true;
-	  plugins = [ "colored-man-pages" "fzf" "git" "sudo" ];
-	  theme = "agnoster";
-	};
-	autocd = true;
-	defaultKeymap = "viins";
-	shellAliases = {
-	  nx = "cd /etc/nixos";
-	  nxm = "cd /etc/nixos/modules";
+        enable = true;
+        enableAutosuggestions = true;
+        oh-my-zsh = {
+          enable = true;
+          plugins = [ "colored-man-pages" "fzf" "git" "sudo" ];
+          theme = "agnoster";
+        };
+        autocd = true;
+        defaultKeymap = "viins";
+        shellAliases = {
+          ls = lib.mkForce "l";
 
-	  nxc = "nx; sudo nvim configuration.nix";
-	  nxh = "nx; sudo nvim home-manager.nix";
+          nx = "cd /etc/nixos";
+          nxm = "cd /etc/nixos/modules";
 
-	  nr = "sudo nixos-rebuild build";
-	  nrs = "sudo nixos-rebuild switch";
+          nxc = "nx; sudo lvim configuration.nix";
+          nxh = "nx; sudo lvim home-manager.nix";
 
-	  nfmt = "sudo nixfmt /etc/nixos/**";
-	  nxf = "nx; sudo nvim $(fzf)";
-	};
+          nr = "sudo nixos-rebuild build";
+          nrs = "sudo nixos-rebuild switch";
+
+          nfmt = "sudo nixfmt /etc/nixos/**";
+          nxf = "nx; sudo lvim $(fzf)";
+        };
+      };
+
+      eza = {
+        enable = true;
+        enableAliases = true;
+        extraOptions = [ "--group-directories-first" ];
       };
     };
+
     services.clipman.enable = true;
   };
 

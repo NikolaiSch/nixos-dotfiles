@@ -4,7 +4,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./home-manager.nix ];
+  imports = [ ./hardware-configuration.nix ./home.nix ];
 
   boot.loader = {
     systemd-boot.enable = true;
@@ -14,7 +14,7 @@
 
   nix = {
     settings = {
-      extra-experimental-features = [ "nix-command" ];
+      extra-experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
     optimise = {
@@ -42,7 +42,7 @@
   };
 
   networking = {
-    hostName = "nixos";
+    hostName = "vixos";
     networkmanager.enable = true;
   };
 
@@ -63,8 +63,21 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ pkgs.git pkgs.nixfmt ];
+  environment = {
+    systemPackages = with pkgs; [
+      pkgs.nixfmt
+      pkgs.wl-clipboard
+      pkgs.brave
+      pkgs.lunarvim
+      pkgs.zsh
+    ];
+    variables = {
+      EDITOR = "lvim";
+      VISUAL = "lvim";
+    };
+  };
   security.polkit.enable = true;
+  programs.zsh.enable = true;
 
   services = {
     xserver = {
@@ -84,7 +97,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ pkgs.udev-gothic-nf ];
     shell = pkgs.zsh;
-    ignoreShellProgramCheck = true;
   };
 
   nixpkgs.config.allowUnfree = true;

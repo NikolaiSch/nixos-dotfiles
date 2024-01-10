@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   imports = [
@@ -10,17 +10,8 @@
 
   home-manager.users.vii = { pkgs, ... }: {
 
-    home.packages = [ pkgs.chromium ];
+    home.packages = [ ];
 
-    
-
-    programs.eza = {
-      enable = true;
-      enableAliases = true;
-      extraOptions = [ "--group-directories-first" ];
-    };
-
-    programs.chromium.enable = true;
     programs.waybar.enable = true;
 
     wayland.windowManager.hyprland = {
@@ -168,7 +159,6 @@
         color15 = "#ECEFF4";
       };
     };
-
     home.stateVersion = "23.11";
   };
 }
