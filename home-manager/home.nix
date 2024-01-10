@@ -14,7 +14,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
-    ./hyprland.nix
+    # ./hyprland.nix
   ];
 
   nixpkgs = {
@@ -51,7 +51,8 @@
 	lvim
 	git	
  ];
-
+  
+  programs.hyprland.enable = true;
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
