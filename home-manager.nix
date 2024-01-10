@@ -12,27 +12,7 @@
 
     home.packages = [ pkgs.chromium ];
 
-    programs.zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "colored-man-pages" "fzf" "git" "sudo" ];
-        theme = "agnoster";
-      };
-      autocd = true;
-      defaultKeymap = "viins";
-      shellAliases = {
-        nxc = "sudo nvim /etc/nixos/configuration.nix"; # Nixos configuration
-        nxh = "sudo nvim /etc/nixos/home-manager.nix"; # Nixos Home
-        nx = "cd /etc/nixos/"; # Nixos location
-
-        nrs = "sudo nixos-rebuild switch"; # Nixos Rebuild Switch
-
-        nfmt = "sudo nixfmt /etc/nixos/**"; # Nix Format
-        nxf = "nx; sudo nvim $(fzf -1)"; # NixOs Find
-      };
-    };
+    
 
     programs.eza = {
       enable = true;

@@ -5,9 +5,12 @@
       enable = true;
       userName = "nikolai";
       userEmail = "nikolais@tuta.io";
-      extraConfig = {
-	safe.directory = [ "/etc/nixos" ];
-      };
+      extraConfig = { safe.directory = [ "/etc/nixos" ]; };
+    };
+
+    programs.gh = {
+      enable = true;
+      gitCredentialHelper.enable = true;
     };
   };
 
