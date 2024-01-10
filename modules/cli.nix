@@ -15,13 +15,13 @@
         autocd = true;
         defaultKeymap = "viins";
         shellAliases = {
-          ls = lib.mkForce "l";
+          vi = "sudo lvim";
 
           nx = "cd /etc/nixos";
           nxm = "cd /etc/nixos/modules";
 
           nxc = "nx; sudo lvim configuration.nix";
-          nxh = "nx; sudo lvim home-manager.nix";
+          nxh = "nx; sudo lvim home.nix";
 
           nr = "sudo nixos-rebuild build";
           nrs = "sudo nixos-rebuild switch";
@@ -34,7 +34,7 @@
       eza = {
         enable = true;
         enableAliases = true;
-        extraOptions = [ "--group-directories-first" ];
+        extraOptions = [ "--group-directories-first" "--colour=always" ];
       };
     };
 

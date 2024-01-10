@@ -33,6 +33,7 @@
     nvidia = {
       package = config.boot.kernelPackages.nvidiaPackages.production;
       modesetting.enable = true;
+      
       prime = {
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:10:0:0";
@@ -64,12 +65,16 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [
+    systemPackages = [
       pkgs.nixfmt
       pkgs.wl-clipboard
       pkgs.brave
       pkgs.lunarvim
       pkgs.zsh
+      pkgs.rofi-wayland
+      pkgs.udev-gothic-nf
+      pkgs.pass-wayland
+      pkgs.rofi-pass-wayland
     ];
     variables = {
       EDITOR = "lvim";
@@ -84,9 +89,11 @@
       layout = "gb";
       xkbVariant = "";
       videoDrivers = [ "nvidia" ];
+      displayManager.gdm.enable = true;
     };
     openssh.enable = true;
     getty.autologinUser = "vii";
+
   };
 
   console = { keyMap = "uk"; };
