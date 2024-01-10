@@ -20,6 +20,28 @@
     ./hardware-configuration.nix
   ];
 
+  hardware.opengl = {
+   enable = true;
+   driSupport = true;
+   driSupport32Bit = true;
+  };
+
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware = {
+  nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    nvidiaSettings = false;
+    prime = {
+    intelBusId ="PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+    sync.enable = true;
+    };
+    };
+  };
+
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -62,7 +84,10 @@
     auto-optimise-store = true;
   };
 
-  # FIXME: Add the rest of your current configuration
+  environment.systemPackages = [
+	pkgs.lunarvim
+	pkgs.git
+];
 
   # TODO: Set your hostname
   networking.hostName = "nixos";
