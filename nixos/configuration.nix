@@ -26,6 +26,10 @@
    driSupport32Bit = true;
   };
  security.sudo.wheelNeedsPassword = false;
+ xdg.portal = {
+ enable = true;
+ wlr.enable = true;
+ };
   services = {
     xserver = {
       layout = "gb";
@@ -102,6 +106,7 @@
   swww
   waypaper
   vscode-fhs
+  nixfmt
 ];
 
   # TODO: Set your hostname

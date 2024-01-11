@@ -81,14 +81,14 @@
       autocd = true;
       defaultKeymap = "viins";
       shellAliases = {
-        nxc = "sudo lvim /etc/nixos/configuration.nix"; # Nixos configuration
-        nxh = "sudo lvim /etc/nixos/home-manager.nix"; # Nixos Home
-        nx = "cd /etc/nixos/"; # Nixos location
+        nxc = "sudo lvim ~/nixc/nixos/configuration.nix"; # Nixos configuration
+        nxh = "sudo lvim ~/nixc/home-manager/home.nix"; # Nixos Home
+        nx = "cd ~/nixc/"; # Nixos location
 
         nr = "sudo nixos-rebuild switch --flake ~/nixc#nixos"; # Nixos Rebuild Switch
         nh = "home-manager switch --flake ~/nixc#vii@nixos"; # Nixos Rebuild Switch
 
-        nfmt = "sudo nixfmt /etc/nixos/**"; # Nix Format
+        nfmt = "sudo nixfmt ~/nixc/**"; # Nix Format
         nxf = "nx; sudo lvim $(fzf -1)"; # NixOs Find
       };
     };
@@ -125,7 +125,8 @@
       settings = {
         "$mod" = "SUPER";
         "$term" = "kitty";
-        "$nx" = "kitty -d '/etc/nixos/' zsh -c 'nxf'";
+        "$nx" = "kitty -d '~/nixc/' zsh -c 'nxf'";
+        "$editor" = "code";
         monitor = [ "eDP-1,1920x1080@60, 0x0,1" ];
         exec-once = "waybar";
         bind = [
@@ -135,6 +136,7 @@
           "$mod, M, exit"
           "$mod SHIFT, F, exec, thunar"
           "$mod SHIFT, B, exec, chromium"
+          "$mod SHIFT, E, exec, code"
           # "$mod SHIFT, P,"
           "$mod, V, togglefloating"
           #"$mod, R"
