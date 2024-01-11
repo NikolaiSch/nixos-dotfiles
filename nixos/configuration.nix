@@ -8,13 +8,10 @@
 
     ./hardware-configuration.nix
     ./sys-pkgs.nix
+    ./hardware-opts.nix
   ];
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  
   security.sudo.wheelNeedsPassword = false;
   xdg.portal = {
     enable = true;
@@ -26,20 +23,16 @@
       xkbVariant = "";
       videoDrivers = [ "nvidia" ];
     };
-  };
-  hardware = {
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
-      powerManagement.enable = true;
-      nvidiaSettings = false;
-      prime = {
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
-        sync.enable = true;
-      };
+    openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
     };
+    }; 
+  
   };
+  
 
   nixpkgs = {
     overlays = [
@@ -96,15 +89,6 @@
     };
   };
   programs.zsh.enable = true;
- services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = false;
-    };
-    
-  };
-
 
   system.stateVersion = "23.05";
 }
