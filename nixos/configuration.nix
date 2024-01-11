@@ -26,7 +26,17 @@
    driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services = {
+    xserver = {
+      layout = "gb";
+      xkbVariant = "";
+      videoDrivers = [ "nvidia" ];
+    };
+    };
+  programs.hyprland ={
+  enable = true;
+  xwayland.enable = true;
+  };
 
   hardware = {
   nvidia = {
@@ -84,9 +94,10 @@
     auto-optimise-store = true;
   };
 
-  environment.systemPackages = [
-	pkgs.lunarvim
-	pkgs.git
+  environment.systemPackages = with pkgs; [
+	lunarvim
+	git
+  kitty
 ];
 
   # TODO: Set your hostname
@@ -109,8 +120,10 @@
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
       extraGroups = ["wheel" "networkmanager"];
+      shell = pkgs.zsh;
     };
   };
+  programs.zsh.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
@@ -123,7 +136,7 @@
       PasswordAuthentication = false;
     };
   };
-
+  
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }
