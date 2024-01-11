@@ -1,5 +1,4 @@
-{ ... }: {
-  
+{ config, ... }: {
 
   hardware = {
     nvidia = {
@@ -14,10 +13,10 @@
       };
     };
     opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
   };
 
 }

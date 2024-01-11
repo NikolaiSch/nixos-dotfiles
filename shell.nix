@@ -1,11 +1,9 @@
 { pkgs ? import <nixpkgs> { } }:
-let
-  mynode = pkgs.nodejs-18_x;
+let mynode = pkgs.nodejs-18_x;
 
-in
-pkgs.stdenv.mkDerivation {
+in pkgs.stdenv.mkDerivation {
   name = "my-shell";
-  packages = [  ];
+  packages = [ ];
   shellHook = "";
   buildInputs = [ mynode ];
 }
