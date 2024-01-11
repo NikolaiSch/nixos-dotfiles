@@ -14,6 +14,8 @@
     vscode-fhs
     nixfmt
     wl-clipboard
+    xdg-desktop-portal-hyprland
+    xdg-utils
   ];
 
 }
