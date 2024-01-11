@@ -98,6 +98,7 @@
 	lunarvim
 	git
   kitty
+  fzf
 ];
 
   # TODO: Set your hostname

@@ -77,7 +77,8 @@
         nxh = "sudo nvim /etc/nixos/home-manager.nix"; # Nixos Home
         nx = "cd /etc/nixos/"; # Nixos location
 
-        nrs = "sudo nixos-rebuild switch"; # Nixos Rebuild Switch
+        nr = "sudo nixos-rebuild switch --flake ~/nixc#nixos"; # Nixos Rebuild Switch
+        nh = "home-manager switch --flake ~/nixc#vii@nixos"; # Nixos Rebuild Switch
 
         nfmt = "sudo nixfmt /etc/nixos/**"; # Nix Format
         nxf = "nx; sudo nvim $(fzf -1)"; # NixOs Find
