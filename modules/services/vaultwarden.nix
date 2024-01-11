@@ -4,9 +4,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.services.vaultwarden;
 in {
-  options.modules.services.vaultwarden = {
-    enable = mkBoolOpt false;
-  };
+  options.modules.services.vaultwarden = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
     services.vaultwarden.enable = true;

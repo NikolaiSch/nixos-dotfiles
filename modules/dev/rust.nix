@@ -11,8 +11,9 @@
 
 with lib;
 with lib.my;
-let devCfg = config.modules.dev;
-    cfg = devCfg.rust;
+let
+  devCfg = config.modules.dev;
+  cfg = devCfg.rust;
 in {
   options.modules.dev.rust = {
     enable = mkBoolOpt false;
@@ -24,9 +25,9 @@ in {
       user.packages = [ pkgs.rustup ];
       env.PATH = [ "$(${pkgs.yarn}/bin/yarn global bin)" ];
       environment.shellAliases = {
-        rs  = "rustc";
+        rs = "rustc";
         rsp = "rustup";
-        ca  = "cargo";
+        ca = "cargo";
       };
     })
 

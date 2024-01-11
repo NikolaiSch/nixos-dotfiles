@@ -2,19 +2,14 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.desktop.stumpwm;
-    configDir = config.dotfiles.configDir;
+let
+  cfg = config.modules.desktop.stumpwm;
+  configDir = config.dotfiles.configDir;
 in {
-  options.modules.desktop.stumpwm = {
-    enable = mkBoolOpt false;
-  };
+  options.modules.desktop.stumpwm = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      lightdm
-      dunst
-      libnotify
-    ];
+    environment.systemPackages = with pkgs; [ lightdm dunst libnotify ];
 
     # master.services.picom.enable = true;
     services = {

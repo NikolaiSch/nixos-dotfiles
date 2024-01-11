@@ -8,8 +8,9 @@
 
 with lib;
 with lib.my;
-let devCfg = config.modules.dev;
-    cfg = devCfg.cc;
+let
+  devCfg = config.modules.dev;
+  cfg = devCfg.cc;
 in {
   options.modules.dev.cc = {
     enable = mkBoolOpt false;

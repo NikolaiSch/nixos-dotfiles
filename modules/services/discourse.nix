@@ -4,9 +4,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.services.discourse;
 in {
-  options.modules.services.discourse = {
-    enable = mkBoolOpt false;
-  };
+  options.modules.services.discourse = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
     services.postgresql.package = pkgs.postgresql;

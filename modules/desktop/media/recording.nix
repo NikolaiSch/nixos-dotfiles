@@ -20,9 +20,17 @@ in {
     services.pipewire.jack.enable = true;
 
     user.packages = with pkgs;
-      # for recording and remastering audio
-      (if cfg.audio.enable then [ unstable.audacity-gtk3 unstable.ardour ] else []) ++
+    # for recording and remastering audio
+      (if cfg.audio.enable then [
+        unstable.audacity-gtk3
+        unstable.ardour
+      ] else
+        [ ]) ++
       # for longer term streaming/recording the screen
-      (if cfg.video.enable then [ unstable.obs-studio unstable.handbrake ] else []);
+      (if cfg.video.enable then [
+        unstable.obs-studio
+        unstable.handbrake
+      ] else
+        [ ]);
   };
 }

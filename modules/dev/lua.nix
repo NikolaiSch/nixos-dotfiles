@@ -9,8 +9,9 @@
 
 with lib;
 with lib.my;
-let devCfg = config.modules.dev;
-    cfg = devCfg.lua;
+let
+  devCfg = config.modules.dev;
+  cfg = devCfg.lua;
 in {
   options.modules.dev.lua = {
     enable = mkBoolOpt false;

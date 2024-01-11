@@ -6,8 +6,9 @@
 
 with lib;
 with lib.my;
-let devCfg = config.modules.dev;
-    cfg = devCfg.common-lisp;
+let
+  devCfg = config.modules.dev;
+  cfg = devCfg.common-lisp;
 in {
   options.modules.dev.common-lisp = {
     enable = mkBoolOpt false;
@@ -16,10 +17,7 @@ in {
 
   config = mkMerge [
     (mkIf cfg.enable {
-      user.packages = with pkgs; [
-        sbcl
-        lispPackages.quicklisp
-      ];
+      user.packages = with pkgs; [ sbcl lispPackages.quicklisp ];
     })
 
     (mkIf cfg.xdg.enable {

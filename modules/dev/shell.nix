@@ -9,8 +9,9 @@
 
 with lib;
 with lib.my;
-let devCfg = config.modules.dev;
-    cfg = devCfg.shell;
+let
+  devCfg = config.modules.dev;
+  cfg = devCfg.shell;
 in {
   options.modules.dev.shell = {
     enable = mkBoolOpt false;
@@ -18,11 +19,7 @@ in {
   };
 
   config = mkMerge [
-    (mkIf cfg.enable {
-      user.packages = with pkgs; [
-        shellcheck
-      ];
-    })
+    (mkIf cfg.enable { user.packages = with pkgs; [ shellcheck ]; })
 
     (mkIf cfg.xdg.enable {
       # TODO

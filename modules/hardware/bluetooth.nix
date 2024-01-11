@@ -2,14 +2,11 @@
 
 with lib;
 with lib.my;
-let hwCfg = config.modules.hardware;
-    cfg = hwCfg.bluetooth;
+let
+  hwCfg = config.modules.hardware;
+  cfg = hwCfg.bluetooth;
 in {
-  options.modules.hardware.bluetooth = {
-    enable = mkBoolOpt false;
-  };
+  options.modules.hardware.bluetooth = { enable = mkBoolOpt false; };
 
-  config = mkIf cfg.enable {
-    hardware.bluetooth.enable = true;
-  };
+  config = mkIf cfg.enable { hardware.bluetooth.enable = true; };
 }

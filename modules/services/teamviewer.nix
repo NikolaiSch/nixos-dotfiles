@@ -4,11 +4,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.services.teamviewer;
 in {
-  options.modules.services.teamviewer = {
-    enable = mkBoolOpt false;
-  };
+  options.modules.services.teamviewer = { enable = mkBoolOpt false; };
 
-  config = mkIf cfg.enable {
-    services.teamviewer.enable = true;
-  };
+  config = mkIf cfg.enable { services.teamviewer.enable = true; };
 }

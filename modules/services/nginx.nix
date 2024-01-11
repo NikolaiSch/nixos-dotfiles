@@ -28,9 +28,9 @@ in {
         # Reduce the permitted size of client requests, to reduce the likelihood
         # of buffer overflow attacks. This can be tweaked on a per-vhost basis,
         # as needed.
-        clientMaxBodySize = "256k";  # default 10m
+        clientMaxBodySize = "256k"; # default 10m
         # Significantly speed up regex matchers
-        appendConfig = ''pcre_jit on;'';
+        appendConfig = "pcre_jit on;";
         commonHttpConfig = ''
           client_body_buffer_size  4k;       # default: 8k
           large_client_header_buffers 2 4k;  # default: 4 8k
@@ -49,12 +49,12 @@ in {
 
     (mkIf cfg.enableCloudflareSupport {
       services.nginx.commonHttpConfig = ''
-        ${concatMapStrings (ip: "set_real_ip_from ${ip};\n")
-          (filter (line: line != "")
-            (splitString "\n" ''
-              ${readFile (fetchurl "https://www.cloudflare.com/ips-v4/")}
-              ${readFile (fetchurl "https://www.cloudflare.com/ips-v6/")}
-            ''))}
+        ${concatMapStrings (ip: ''
+          set_real_ip_from ${ip};
+        '') (filter (line: line != "") (splitString "\n" ''
+          ${readFile (fetchurl "https://www.cloudflare.com/ips-v4/")}
+          ${readFile (fetchurl "https://www.cloudflare.com/ips-v6/")}
+        ''))}
         real_ip_header CF-Connecting-IP;
       '';
     })

@@ -2,30 +2,31 @@
 
 with lib;
 with lib.my;
-let cfg = config.modules.services.cgit;
-    cgitrc = pkgs.writeText "cgitrc" ''
-      css=/static/cgit.css
-      logo=/static/cgit.png
-      favicon=/static/favicon.ico
-      root-title=Repositories
-      root-desc=Browse repositories
-      snapshots=tar.gz zip
+let
+  cfg = config.modules.services.cgit;
+  cgitrc = pkgs.writeText "cgitrc" ''
+    css=/static/cgit.css
+    logo=/static/cgit.png
+    favicon=/static/favicon.ico
+    root-title=Repositories
+    root-desc=Browse repositories
+    snapshots=tar.gz zip
 
-      readme=:README
-      readme=:readme
-      readme=:readme.md
-      readme=:README.md
-      readme=:readme.org
-      readme=:README.org
+    readme=:README
+    readme=:readme
+    readme=:readme.md
+    readme=:README.md
+    readme=:readme.org
+    readme=:README.org
 
-      ${cfg.extraConfig}
+    ${cfg.extraConfig}
 
-      about-filter=${cfg.package}/lib/cgit/filters/about-formatting.sh
-      source-filter=${cfg.package}/lib/cgit/filters/syntax-highlighting.py
-      remove-suffix=1
-      section-from-path=1
-      scan-path=${cfg.reposDirectory}
-    '';
+    about-filter=${cfg.package}/lib/cgit/filters/about-formatting.sh
+    source-filter=${cfg.package}/lib/cgit/filters/syntax-highlighting.py
+    remove-suffix=1
+    section-from-path=1
+    scan-path=${cfg.reposDirectory}
+  '';
 in {
   options.modules.services.cgit = with types; {
     enable = mkBoolOpt false;
@@ -49,7 +50,7 @@ in {
 
   config = mkIf cfg.enable {
     users = {
-      groups.${cfg.user} = {};
+      groups.${cfg.user} = { };
       users.${cfg.user} = {
         createHome = true;
         group = cfg.user;

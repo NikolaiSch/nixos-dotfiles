@@ -9,9 +9,7 @@ with lib;
 with lib.my;
 let cfg = config.modules.shell.adl;
 in {
-  options.modules.shell.adl = {
-    enable = mkBoolOpt false;
-  };
+  options.modules.shell.adl = { enable = mkBoolOpt false; };
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
