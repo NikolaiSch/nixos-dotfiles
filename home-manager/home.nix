@@ -13,7 +13,7 @@
     # inputs.nix-colors.homeManagerModule
     inputs.ags.homeManagerModules.default
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    # ./lvim.nix
     # ./hyprland.nix
   ];
 
@@ -81,15 +81,15 @@
       autocd = true;
       defaultKeymap = "viins";
       shellAliases = {
-        nxc = "sudo nvim /etc/nixos/configuration.nix"; # Nixos configuration
-        nxh = "sudo nvim /etc/nixos/home-manager.nix"; # Nixos Home
+        nxc = "sudo lvim /etc/nixos/configuration.nix"; # Nixos configuration
+        nxh = "sudo lvim /etc/nixos/home-manager.nix"; # Nixos Home
         nx = "cd /etc/nixos/"; # Nixos location
 
         nr = "sudo nixos-rebuild switch --flake ~/nixc#nixos"; # Nixos Rebuild Switch
         nh = "home-manager switch --flake ~/nixc#vii@nixos"; # Nixos Rebuild Switch
 
         nfmt = "sudo nixfmt /etc/nixos/**"; # Nix Format
-        nxf = "nx; sudo nvim $(fzf -1)"; # NixOs Find
+        nxf = "nx; sudo lvim $(fzf -1)"; # NixOs Find
       };
     };
 
@@ -100,7 +100,15 @@
     };
 
     programs.chromium.enable = true;
-    programs.waybar.enable = true;
+    programs.waybar = {
+      enable = true;
+         };
+
+         home.file = {
+  ".config/waybar" = {
+    source = /home/vii/nixc/home-manager/configs/waybar;
+  };
+};
 
     wayland.windowManager.hyprland = {
       # Whether to enable Hyprland wayland compositor
