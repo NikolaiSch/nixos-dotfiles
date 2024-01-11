@@ -11,11 +11,19 @@
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
-
+    inputs.ags.homeManagerModules.default
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     # ./hyprland.nix
   ];
+
+  programs.ags = {
+    enable = true;
+
+    configDir = /home/vii/nixc/home-manager/configs/ags;
+
+    extraPackages = [ ];
+  };
 
   nixpkgs = {
     # You can add overlays here

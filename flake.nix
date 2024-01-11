@@ -9,6 +9,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    ags.url = "github:Aylur/ags";
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -16,6 +17,7 @@
     self,
     nixpkgs,
     home-manager,
+    ags,
     ...
   } @ inputs: let
     inherit (self) outputs;
