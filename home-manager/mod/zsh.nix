@@ -1,5 +1,5 @@
 { ... }: {
-programs.zsh = {
+  programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
     oh-my-zsh = {
@@ -17,7 +17,7 @@ programs.zsh = {
       nr =
         "sudo nixos-rebuild switch --flake ~/nixc#nixos"; # Nixos Rebuild Switch
       nh =
-        "home-manager switch --flake ~/nixc#vii@nixos"; # Nixos Rebuild Switch
+        "home-manager switch --flake ~/nixc#vii@nixos --impure"; # Nixos Rebuild Switch
 
       nfmt = "sudo nixfmt ~/nixc/**"; # Nix Format
       nxf = "nx; sudo lvim $(fzf -1)"; # NixOs Find
