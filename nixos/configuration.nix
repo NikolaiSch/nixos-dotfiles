@@ -89,22 +89,22 @@
       hashedPassword = "";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO6lg2zpJwiGyquqRD+3bkGW1AqOOTsbZ+lLajxMmh/a nikolais@tuta.io"
       ];
       extraGroups = [ "wheel" "networkmanager" ];
       shell = pkgs.zsh;
     };
   };
   programs.zsh.enable = true;
-
-  services.openssh = {
+ services.openssh = {
     enable = true;
     settings = {
       PermitRootLogin = "no";
-      PasswordAuthentication = true;
+      PasswordAuthentication = false;
     };
     
   };
+
 
   system.stateVersion = "23.05";
 }
