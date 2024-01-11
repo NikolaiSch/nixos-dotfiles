@@ -1,6 +1,7 @@
 { pkgs ? import <nixpkgs> { } }:
 let
-  mynode = pkgs.nodejs-14_x;
+  mynode = pkgs.nodejs-18_x;
+
 in
 pkgs.stdenv.mkDerivation {
   name = "my-shell";
