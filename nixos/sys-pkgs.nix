@@ -16,7 +16,7 @@
     wl-clipboard
     xdg-desktop-portal-hyprland
     xdg-utils
-    nodenv
+    nodejs_20
   ];
 
 }
