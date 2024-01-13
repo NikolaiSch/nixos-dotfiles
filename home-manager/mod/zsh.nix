@@ -21,6 +21,8 @@
 
       nfmt = "sudo nixfmt ~/nixc/**"; # Nix Format
       nxf = "nx; sudo lvim $(fzf -1)"; # NixOs Find
+
+      cat = "bat";
     };
   };
 

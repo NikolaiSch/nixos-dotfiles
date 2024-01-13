@@ -17,6 +17,10 @@
     xdg-desktop-portal-hyprland
     xdg-utils
     nodejs_20
+    bat
+
+  # hacking
+  sqlmap
   ];
 
 }

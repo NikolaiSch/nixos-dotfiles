@@ -29,7 +29,7 @@
         PasswordAuthentication = false;
       };
     };
-
+    getty.autologinUser = "vii";
   };
 
   nix = {
