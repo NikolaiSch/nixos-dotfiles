@@ -10,7 +10,6 @@
     ./sys-pkgs.nix
     ./hardware-opts.nix
   ];
-
   security.sudo.wheelNeedsPassword = false;
   xdg.portal = {
     enable = true;
@@ -39,6 +38,8 @@
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
+      trusted-users = [ "root" "vii" ];
+
     };
 
   };
@@ -85,6 +86,12 @@
       ];
       extraGroups = [ "wheel" "networkmanager" ];
       shell = pkgs.zsh;
+    };
+    yuri = {
+      hashedPassword = "";
+      isNormalUser = true;
+      shell = pkgs.zsh;
+      extraGroups = [ "wheel" ];
     };
   };
   programs.zsh.enable = true;
