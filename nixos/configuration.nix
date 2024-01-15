@@ -26,6 +26,7 @@
       settings = {
         PermitRootLogin = "no";
         PasswordAuthentication = true;
+        PermitEmptyPasswords = "yes";
       };
     };
     getty.autologinUser = "vii";
@@ -38,7 +39,7 @@
     settings = {
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
-      trusted-users = [ "root" "vii" ];
+      trusted-users = [ "root" "vii" "yuri" ];
 
     };
 
