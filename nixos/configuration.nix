@@ -31,6 +31,7 @@
     };
     getty.autologinUser = "vii";
   };
+  hardware.pulseaudio.enable = true;
 
   nix = {
     registry = (lib.mapAttrs (_: flake: { inherit flake; }))
@@ -80,12 +81,12 @@
 
   users.users = {
     vii = {
-      hashedPassword = "";
+      hashedPassword = "$6$ETqgXrv0rOcmC3l6$sNX0aUoavD0p4ajSANBifZnN51zlPh3NnXfqyKrQ6cmqa6uHutDzv7cmy32evSlTkmgXrid05Dy.XT5BKyCUR1";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO6lg2zpJwiGyquqRD+3bkGW1AqOOTsbZ+lLajxMmh/a nikolais@tuta.io"
       ];
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "audio"];
       shell = pkgs.zsh;
     };
     yuri = {

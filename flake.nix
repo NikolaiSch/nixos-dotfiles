@@ -11,9 +11,10 @@
 
     ags.url = "github:Aylur/ags";
     # nix-colors.url = "github:misterio77/nix-colors";
-  };
 
-  outputs = { self, nixpkgs, home-manager, ags, ... }@inputs:
+};
+
+  outputs = { self, nixpkgs, home-manager, ags, snowfall-lib, ... }@inputs:
     let inherit (self) outputs;
     in {
       nixosConfigurations = {
@@ -46,4 +47,6 @@
 
       };
     };
+
+    
 }
